@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "crm-lite",
+  "alias": ["crm-lite"],
+  "build": {
+    "env": {
+      "REACT_APP_API_URL": "http://localhost/graphql"
+    }
+  }
+}
+
