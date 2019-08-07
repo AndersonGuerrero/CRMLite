@@ -4,8 +4,8 @@ import { Query } from 'react-apollo'
 import { GET_CLIENTS_QUERY } from '../queries'
 
 export const Clients = () => (
-  <Query query={GET_CLIENTS_QUERY}>
-    {({ loading, error, data}) =>{
+  <Query query={GET_CLIENTS_QUERY} pollInterval={8000}>
+    {({ loading, error, data, StartPolling, StopPolling}) =>{
       if (loading) return "Cargando..."
       if (error) return `Error: ${error.message}`
       console.log(data)
