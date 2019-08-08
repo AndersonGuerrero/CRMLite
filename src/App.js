@@ -1,14 +1,18 @@
 import React from 'react'
 import { ApolloProvider } from 'react-apollo'
-import ApolloClient from 'apollo-boost'
+import ApolloClient, { InMemoryCache } from 'apollo-boost'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+import './index.css'
 import { Header } from './components/Header'
 import { Clients } from './components/Clients'
 import { NewClient } from './components/NewClient'
 import { EditClient } from './components/EditClient'
 
 const client = new ApolloClient({
+  cache: new InMemoryCache({
+    addTypename: false
+  }),
   uri: process.env.REACT_APP_API_URL,
   onError: ({ networkError, graphQLErrors})=>{
     console.log('graphQLErrors: ', graphQLErrors)

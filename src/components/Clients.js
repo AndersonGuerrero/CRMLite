@@ -8,7 +8,6 @@ export const Clients = () => (
     {({ loading, error, data, StartPolling, StopPolling}) =>{
       if (loading) return "Cargando..."
       if (error) return `Error: ${error.message}`
-      console.log(data)
       return (
         <Fragment>
           <h2 className="text-center">Listado de clientes</h2>

@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { Mutation } from 'react-apollo'
 
 import { NEW_CLIENT_MUTATION } from '../mutations'
+import { generateKey } from '../functions'
 
 export const NewClient = (props) => {
   const [error, setError] = useState(false)
@@ -16,10 +17,6 @@ export const NewClient = (props) => {
   const onChangeInputEmail = (e, i) =>{
     emails[i].email = e.target.value
     setEmails(emails)
-  }
-
-  const generateKey = () => {
-    return `crm_lite_${ new Date().getTime() }`;
   }
 
   const newFieldEmail = ()=>{
@@ -95,17 +92,13 @@ export const NewClient = (props) => {
                 <div className="form-row">
                     <div className="form-group col-md-12">
                         <label>Empresa</label>
-                        <input type="text" className="form-control" placeholder="Empresa" onChange={ e => {
-                          setClient({
-                              ...client,
-                              company: e.target.value
-                          })
-                        }} />
-                    </div>
-                    <div className="form-group d-flex justify-content-center col-md-12">
-                      <button type="button" className="btn btn-warning" onClick={newFieldEmail}>
-                        + Agregar Email
-                      </button>
+                        <input type="text" className="form-control" placeholder="Empresa" 
+                          onChange={ e => {
+                            setClient({
+                                ...client,
+                                company: e.target.value
+                            })
+                          }} />
                     </div>
                     {
                       emails.map( (item, index) => (
@@ -125,16 +118,23 @@ export const NewClient = (props) => {
                         </div>
                       ))
                     }
+                    <div className="form-group d-flex justify-content-center col-md-12">
+                      <button type="button" className="btn btn-warning" onClick={newFieldEmail}>
+                        + Agregar Email
+                      </button>
+                    </div>
                 </div>
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label>Edad</label>
-                        <input type="text" className="form-control" placeholder="Edad" onChange={ e => {
-                          setClient({
-                              ...client,
-                              age: e.target.value
-                          })
-                        }} />
+                        <input type="text" className="form-control" placeholder="Edad" 
+                            onChange={ e => {
+                              setClient({
+                                  ...client,
+                                  age: e.target.value
+                              })
+                            }} 
+                          />
                     </div>
                     <div className="form-group col-md-6">
                         <label>Tipo Cliente</label>  
