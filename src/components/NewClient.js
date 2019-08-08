@@ -38,7 +38,7 @@ export const NewClient = (props) => {
 
   return (
     <Fragment>
-      <h2 className="text-center">Nuevo CLiente</h2>
+      <h2 className="text-center">Nuevo Cliente</h2>
       {errorMessage}
       <div className="row justify-content-center">
         <Mutation 

@@ -21,7 +21,7 @@ export const Clients = () => (
                     </div>
                     <div className="col-md-4 d-flex justify-content-end">
                       <Link to={`/client/edit/${item._id}`} className="btn btn-success d-block d-md-inline-block">
-                        Editar CLiente
+                        Editar Cliente
                       </Link>
                     </div>
                   </div>
