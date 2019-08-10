@@ -24,3 +24,9 @@ export const UPDATE_CLIENT_MUTATION = gql`
 	  }
 	}
 `
+
+export const REMOVE_CLIENT_MUTATION = gql` 
+mutation removeClient($_id: ID!){
+  removeClient(_id: $_id)
+}
+`

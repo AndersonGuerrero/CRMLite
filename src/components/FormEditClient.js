@@ -29,7 +29,6 @@ const _FormEditClient = (props) =>{
     setEmails(emails)
   }
   const { name, lastname, age, company, type } = client 
-  console.log(client)
 
   const errorMessage = (error) ? <p className="alert alert-danger p-3 text-center"> 
     Todos los campos son obligatorios
