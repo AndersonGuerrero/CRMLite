@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import { FILL_CLIENT_QUERY } from '../queries'
+import { FILL_CLIENT_QUERY } from '../../queries'
 import { FormEditClient } from './FormEditClient'
 
 export const EditClient = (props) => {

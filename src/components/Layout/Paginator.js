@@ -2,13 +2,13 @@ import React from 'react'
 
 export const Paginator = (props) => {
 	
-  const { page, total , clients_per_page, onChangePage } = props
-  const pages = Math.ceil(total / clients_per_page)
+  const { page, total , limit, onChangePage } = props
+  const pages = Math.ceil(total / limit)
   if(page > pages){
     onChangePage(page-1)
   }
   return (
-    <div className="mt-5 d-flex justify-content-center">
+    <div className="mt-5 d-flex justify-content-center mb-2">
       { (page > 1) &&
         <button 
           onClick={()=>onChangePage(page-1)}  

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Mutation } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
 
-import { generateKey } from '../functions'
-import { UPDATE_CLIENT_MUTATION } from '../mutations'
+import { generateKey } from '../../functions'
+import { UPDATE_CLIENT_MUTATION } from '../../mutations'
 
 
 const _FormEditClient = (props) =>{
@@ -37,7 +37,7 @@ const _FormEditClient = (props) =>{
   return (
     <Mutation 
       mutation={UPDATE_CLIENT_MUTATION}
-      onCompleted={ () => props.refetch().then(()=>props.history.push('/')) }
+      onCompleted={ () => props.refetch().then(()=>props.history.push('/clients')) }
     >
     { updateClient => (
       <form className="col-md-8 m-3" onSubmit={ e =>{

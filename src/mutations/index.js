@@ -30,3 +30,31 @@ mutation removeClient($_id: ID!){
   removeClient(_id: $_id)
 }
 `
+//------------------ Products --------------------------
+
+export const NEW_PRODUCT_MUTATION = gql`
+	mutation createProduct($input: ProductInput!){
+	  createProduct(input: $input){
+	    _id
+	    name
+	    price
+	    stock
+	  }
+	}
+`
+
+export const UPDATE_PRODUCT_MUTATION = gql` 
+	mutation UpdateProduct($input: ProductUpdateInput!) {
+	  updateProduct(input: $input) {
+	    name
+	    price
+	    stock
+	  }
+	}
+`
+
+export const REMOVE_PRODUCT_MUTATION = gql` 
+mutation removeProduct($_id: ID!){
+  removeProduct(_id: $_id)
+}
+`

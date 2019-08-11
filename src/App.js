@@ -2,12 +2,12 @@ import React from 'react'
 import { ApolloProvider } from 'react-apollo'
 import ApolloClient, { InMemoryCache } from 'apollo-boost'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { ApolloProvider as ApolloProviderHooks } from "react-apollo-hooks"
 
 import './index.css'
-import { Header } from './components/Header'
-import { Clients } from './components/Clients'
-import { NewClient } from './components/NewClient'
-import { EditClient } from './components/EditClient'
+import { Header } from './components/Layout/Header'
+import { ListClients, NewClient, EditClient } from './components/Clients'
+import { NewProduct, EditProduct, ListProducts } from './components/Products'
 
 const client = new ApolloClient({
   cache: new InMemoryCache({
@@ -23,18 +23,23 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <>
-        	<Header />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Clients} />
-              <Route exact path="/client/new" component={NewClient} />
-              <Route exact path="/client/edit/:id" component={EditClient} />
-            </Switch>
-          </div>
-        < />
-      </Router>
+      <ApolloProviderHooks client={client}>
+        <Router>
+          <>
+          	<Header />
+            <div className="container">
+              <Switch>
+                <Route exact path="/clients" component={ListClients} />
+                <Route exact path="/clients/new" component={NewClient} />
+                <Route exact path="/clients/edit/:id" component={EditClient} />
+                <Route exact path="/products/new" component={NewProduct} />
+                <Route exact path="/products/edit/:id" component={EditProduct} />
+                <Route exact path="/products" component={ListProducts} />
+              </Switch>
+            </div>
+          < />
+        </Router>
+      </ApolloProviderHooks>
     </ApolloProvider>
   );
 }

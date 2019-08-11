@@ -27,3 +27,25 @@ query fillClientEdit($id: ID!){
   	}
   }
 `
+
+export const FILL_PRODUCT_QUERY = gql`
+query fillProductEdit($_id: ID!){
+    getProduct(_id: $_id){
+      _id
+      name
+      stock
+      price
+    }
+  }
+`
+
+export const GET_PRODUCTS_QUERY = gql`
+query getProducts($limit: Int, $offset: Int){
+  products: getProducts(limit: $limit, offset: $offset) {
+    _id
+    name
+    price
+    stock
+  }
+  totalProducts: getTotalProducts
+}`

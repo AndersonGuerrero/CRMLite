@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react'
 import { Mutation } from 'react-apollo'
 
-import { NEW_CLIENT_MUTATION } from '../mutations'
-import { generateKey } from '../functions'
+import { NEW_CLIENT_MUTATION } from '../../mutations'
+import { generateKey } from '../../functions'
 
 export const NewClient = (props) => {
   const [error, setError] = useState(false)
@@ -43,7 +43,7 @@ export const NewClient = (props) => {
       <div className="row justify-content-center">
         <Mutation 
           mutation={NEW_CLIENT_MUTATION}
-          onCompleted={ () => props.history.push('/')}
+          onCompleted={ () => props.history.push('/clients')}
         >
           { createClient => (
             <form className="col-md-8 m-3" onSubmit={ e =>{
