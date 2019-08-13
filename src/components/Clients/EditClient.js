@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { FILL_CLIENT_QUERY } from '../../queries'
 import { FormEditClient } from './FormEditClient'
+import { Spinner } from '../Layout/Spinner'
 
 export const EditClient = (props) => {
 
@@ -13,7 +14,7 @@ export const EditClient = (props) => {
       <div className="row justify-content-center">
         <Query query={FILL_CLIENT_QUERY} variables={{id}}> 
           {( {loading, error, data, refetch} ) =>{
-            if (loading) return 'Cargando'
+            if (loading) return <Spinner />
             if (error) return `Error: ${error.message}`
             return (
               <FormEditClient

@@ -4,6 +4,7 @@ import { useQuery, useMutation } from "react-apollo-hooks"
 import { GET_CLIENTS_QUERY } from '../../queries'
 import { REMOVE_CLIENT_MUTATION } from '../../mutations'
 import { Paginator } from '../Layout/Paginator'
+import { Spinner } from '../Layout/Spinner'
 
 export const ListClients = () => {
     const limit = 5
@@ -50,7 +51,7 @@ export const ListClients = () => {
           }
         )
     }
-  if (loading) return "Cargando..."
+  if (loading) return <Spinner />
   if (error) return `Error: ${error.message}`
 
   return (
@@ -64,13 +65,21 @@ export const ListClients = () => {
                 <div className="col-md-8 d-flex justify-content-between align-items-center">
                   {item.name} {item.lastname}
                 </div>
-                <div className="col-md-3 d-flex justify-content-end">
-                  <Link to={`/client/edit/${item._id}`} className="btn btn-success d-block d-md-inline-block">
+                <div className="col-md-4 d-flex justify-content-end">
+                  <Link 
+                    to={`/orders/new/${item._id}`} 
+                    className="btn btn-warning d-block d-md-inline-block mr-2">
+                    &#43; Nuevo Pedido
+                  </Link>
+                   <Link 
+                    to={`/clients/edit/${item._id}`} 
+                    className="btn btn-success d-block d-md-inline-block mr-3">
                     Editar
                   </Link>
-                  <button type="button" 
-                      onClick={()=>onRemoveClient(item._id)} 
-                    className="btn btn-danger d-block d-md-inline-block ml-3">
+                  <button 
+                    type="button" 
+                    onClick={()=>onRemoveClient(item._id)} 
+                    className="btn btn-danger d-block d-md-inline-block">
                      &times; Emiminar
                     </button>
                 </div>

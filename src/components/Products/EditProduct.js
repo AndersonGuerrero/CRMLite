@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { useQuery } from "react-apollo-hooks"
 import { FILL_PRODUCT_QUERY } from '../../queries'
 import { FormEditProduct } from './FormEditProduct'
+import { Spinner } from '../Layout/Spinner'
 
 export const EditProduct = (props) => {
   const { id } = props.match.params
@@ -9,8 +10,8 @@ export const EditProduct = (props) => {
     variables: { _id: id }
   });
 
-  if (loading) return <h2>Cargando...</h2>
   if (error) return `Error: ${error.message}`
+  if (loading) return <Spinner />
   return (
     <Fragment>
       <h2 className="text-center">Editar Cliente</h2>

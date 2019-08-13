@@ -5,6 +5,7 @@ import { GET_PRODUCTS_QUERY } from '../../queries'
 import { REMOVE_PRODUCT_MUTATION } from '../../mutations'
 import { Paginator } from '../Layout/Paginator'
 import { Success } from '../Alerts/Success'
+import { Spinner } from '../Layout/Spinner'
 
 
 export const ListProducts = () => {
@@ -62,7 +63,7 @@ export const ListProducts = () => {
     }
 
     if (error) return `Error: ${error.message}`
-    if (loading) return "Cargando..."
+    if (loading) return <Spinner />
     return (
           <Fragment>
             <h2 className="text-center">Productos</h2>
@@ -98,7 +99,7 @@ export const ListProducts = () => {
                             </button>
                           </td>
                           <td>
-                            <Link to={`/product/edit/${item._id}`} className="btn btn-success d-block d-md-inline-block">
+                            <Link to={`/products/edit/${item._id}`} className="btn btn-success d-block d-md-inline-block">
                                 Editar
                               </Link>
                           </td>
