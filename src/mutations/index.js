@@ -58,3 +58,27 @@ mutation removeProduct($_id: ID!){
   removeProduct(_id: $_id)
 }
 `
+
+export const NEW_ORDER_MUTATION = gql` 
+mutation createOrder($input: OrderInput!){
+  createOrder(input: $input){
+    _id
+    client
+    total
+    state
+    date
+    order {
+      product_id
+      quantity
+    }
+  }
+}
+`
+export const UPDATE_ORDER_MUTATION = gql`
+mutation updateOrder($input: OrderUpdateInput!){
+  updateOrder(input: $input){
+  	_id
+  	state
+  }
+}
+`

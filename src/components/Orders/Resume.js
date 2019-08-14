@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
 import { Product } from './Product'
 
-export const Resume = ({ products, setProductQuantity }) => {
+export const Resume = ({ products, setProductQuantity, deleteProduct }) => {
   
   if (products.length === 0) return null
   return (
     <Fragment>
-      <h4 className="text-center my-5">Resumen y cantidades</h4>
+      <h4 className="text-center my-3">Resumen y cantidades</h4>
       <table className="table">
         <thead className="bg-success text-light">
           <tr className="font-weight-bold">
@@ -20,7 +20,7 @@ export const Resume = ({ products, setProductQuantity }) => {
         <tbody>
         {
           products.map((product, index)=>(
-            <Product setProductQuantity={setProductQuantity} index={index} key={product._id} product={product} />)
+            <Product deleteProduct={deleteProduct} setProductQuantity={setProductQuantity} index={index} key={product._id} product={product} />)
           )
         }
         </tbody>

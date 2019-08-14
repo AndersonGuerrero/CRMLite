@@ -62,10 +62,15 @@ export const ListClients = () => {
           data.clients.map( item => ( 
             <li className="list-group-item" key={item._id}>
               <div className="row justify-content-between align-items-center" >
-                <div className="col-md-8 d-flex justify-content-between align-items-center">
+                <div className="col-md-6 d-flex justify-content-between align-items-center">
                   {item.name} {item.lastname}
                 </div>
-                <div className="col-md-4 d-flex justify-content-end">
+                <div className="col-md-6 d-flex justify-content-end">
+                   <Link 
+                    to={`/orders/${item._id}`} 
+                    className="btn btn-primary d-block d-md-inline-block mr-2">
+                    Ver Pedidos
+                  </Link>
                   <Link 
                     to={`/orders/new/${item._id}`} 
                     className="btn btn-warning d-block d-md-inline-block mr-2">

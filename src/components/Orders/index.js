@@ -1,3 +1,4 @@
-import { NewOrder } from './NewOrder'
+import { NewOrder  } from './NewOrder'
+import { ClientOrders } from './ClientOrders'
 
-export { NewOrder }
+export { NewOrder, ClientOrders }

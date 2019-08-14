@@ -8,7 +8,7 @@ import './index.css'
 import { Header } from './components/Layout/Header'
 import { ListClients, NewClient, EditClient } from './components/Clients'
 import { NewProduct, EditProduct, ListProducts } from './components/Products'
-import { NewOrder } from './components/Orders'
+import { NewOrder, ClientOrders } from './components/Orders'
 
 const client = new ApolloClient({
   cache: new InMemoryCache({
@@ -37,6 +37,7 @@ function App() {
                 <Route exact path="/products/edit/:id" component={EditProduct} />
                 <Route exact path="/products" component={ListProducts} />
                 <Route exact path="/orders/new/:id" component={NewOrder} />
+                <Route exact path="/orders/:id" component={ClientOrders} />
               </Switch>
             </div>
           < />

@@ -40,12 +40,27 @@ query fillProductEdit($_id: ID!){
 `
 
 export const GET_PRODUCTS_QUERY = gql`
-query getProducts($limit: Int, $offset: Int){
-  products: getProducts(limit: $limit, offset: $offset) {
+query getProducts($limit: Int, $offset: Int, $stock: Boolean){
+  products: getProducts(limit: $limit, offset: $offset, stock: $stock) {
     _id
     name
     price
     stock
   }
   totalProducts: getTotalProducts
+}`
+
+export const GET_ORDERS_QUERY = gql`
+query getOrders($limit: Int, $offset: Int, $client: ID){
+  orders: getOrders(limit: $limit, offset: $offset, client: $client) {
+    _id
+    order {
+      product_id
+      quantity
+    }
+    client
+    total
+    date
+    state
+  }
 }`
