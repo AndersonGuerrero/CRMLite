@@ -6,3 +6,15 @@ body{
 .form-control{
 	color: black !important;
 }
+
+.div-PENDING{
+	border-color: #ecf0f1;
+}
+
+.div-COMPLETED{
+	border-color: #4caf50;
+}
+
+.div-CANCELLED{
+	border-color: #f44336;
+}

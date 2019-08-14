@@ -12,9 +12,10 @@ export const Order = (props) => {
   const date = new Date(Number(order.date))
 
   const onCahngeState = (e) => {
-    const {_id, total, client } = order
+    const {_id, total, client, order } = order
     const input = {
       _id,
+      order,
       total,
       client,
       state: e.target.value
@@ -30,7 +31,7 @@ export const Order = (props) => {
 
   return (
     <div className="col-md-4">
-      <div className={`card mb-3`} >
+      <div className={`card mb-3 div-${order.state}`} >
           <div className="card-body">
               {
                 loading &&
