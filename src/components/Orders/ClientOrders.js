@@ -6,7 +6,7 @@ import { Order } from './Order'
 
 export const ClientOrders = ({match}) => {
   const clientId = match.params.id
-  const { loading, error, data, refetch } = useQuery(GET_ORDERS_QUERY, {
+  const { loading, error, data } = useQuery(GET_ORDERS_QUERY, {
     variables: { client: clientId }
   })
   if (loading) return <Spinner />

@@ -12,10 +12,10 @@ export const Order = (props) => {
   const date = new Date(Number(order.date))
 
   const onCahngeState = (e) => {
-    const {_id, total, client, order } = order
+    const {_id, total, client, order: order2 } = order
     const input = {
       _id,
-      order,
+      order: order2,
       total,
       client,
       state: e.target.value

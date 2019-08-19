@@ -64,3 +64,18 @@ query getOrders($limit: Int, $offset: Int, $client: ID){
     state
   }
 }`
+
+
+// Graficas
+export const GET_TOP_CLIENTS_QUERY = gql`
+query getTopClients {
+  TopClients: getTopClients{
+    total
+    client{
+      name
+      lastname
+      type
+    }
+  }
+}
+`

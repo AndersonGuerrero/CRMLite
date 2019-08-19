@@ -82,7 +82,15 @@ export const ListProducts = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    { data.products.map( item => (
+                    { data.products.map( item => {
+
+                      let classStock =  ''
+                      if ( item.stock < 50 ){
+                        classStock = 'table-danger text-light'
+                      } else if ( item.stock > 50 && item.stock < 100 ){
+                        classStock = 'table-warning text-light'
+                      }
+                      return (
                         <tr key={item._id}>
                           <td>
                             { item.name }
@@ -90,7 +98,7 @@ export const ListProducts = () => {
                           <td>
                             { item.price }
                           </td>
-                          <td>
+                          <td className={classStock}>
                             { item.stock }
                           </td>
                           <td>
@@ -103,9 +111,8 @@ export const ListProducts = () => {
                                 Editar
                               </Link>
                           </td>
-                        </tr>
-
-                      ))
+                        </tr>)
+                      })
                     }
                   </tbody>
               </table> 

@@ -4,7 +4,7 @@ import { FILL_CLIENT_QUERY } from '../../queries'
 import { Spinner } from '../Layout/Spinner'
 
 export const ClientData = ({ client_id }) => {
-  const { loading, error, data, refetch } = useQuery(FILL_CLIENT_QUERY, {
+  const { loading, error, data } = useQuery(FILL_CLIENT_QUERY, {
     variables: { id: client_id }
   })
 

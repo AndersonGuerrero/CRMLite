@@ -82,3 +82,22 @@ mutation updateOrder($input: OrderUpdateInput!){
   }
 }
 `
+
+export const CREATE_USER_MUTATION = gql`
+mutation createUser($input: UserInput!){
+  createUser(input: $input){
+  	error
+  	message
+  }
+}
+`
+// Mutation para Login de usuarios 
+export const LOGIN_USER_MUTATION = gql`
+mutation authentication($input: AuthInput!){
+  authentication(input: $input){
+    error
+    message
+    token
+  }
+}
+`
