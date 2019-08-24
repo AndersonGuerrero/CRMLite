@@ -81,7 +81,8 @@ export const ProductsSection = (props) => {
           <span className="font-weight-normal ml-2">${order.total}</span>
         </p>
       }
-      <GenerateOrder 
+      <GenerateOrder
+        userActual={props.userActual}
         products={order.products} 
         total={order.total}
         refetch={refetch}

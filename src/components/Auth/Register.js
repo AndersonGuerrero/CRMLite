@@ -4,15 +4,19 @@ import { useAlert } from "react-alert";
 
 import { CREATE_USER_MUTATION } from '../../mutations'
 
-export const Register = (props) => {
+export const Register = ({ history, userActual }) => {
   const alert = useAlert()
+  if (userActual.role !== 'ADMIN') history.push('/dashboard')
+
   const [user, setUser] = useState({
     name: '',
     lastname: '',
     username: '',
     password: '',
-    repitPassword: ''
+    repitPassword: '',
+    role: ''
   })
+
   
   const [createUser, { loading }] = useMutation(CREATE_USER_MUTATION)
 
@@ -26,7 +30,7 @@ export const Register = (props) => {
 
   const onSave = (e)=>{
     e.preventDefault()
-    const {name, lastname, username, password, repitPassword } = user
+    const {name, lastname, username, password, repitPassword, role } = user
     if (repitPassword !== password){
       alert.error('Las contraseñas deben ser iguales')
       return;
@@ -35,7 +39,8 @@ export const Register = (props) => {
       name,
       lastname,
       username,
-      password
+      password,
+      role
     }
 
     createUser({
@@ -47,7 +52,7 @@ export const Register = (props) => {
           alert.error(message)
         }else{
           alert.show(message)
-          props.history.push('/users')
+          history.push('/users')
         }
       },
       error => {
@@ -92,6 +97,14 @@ export const Register = (props) => {
                   className="form-control" 
                   placeholder="Nombre Usuario" 
               />
+          </div>
+          <div className="form-group">
+              <label>Rol</label>  
+              <select required className="form-control" name="role" onChange={ onChange } >
+                  <option value="">Elegir...</option>
+                  <option value="ADMIN">Administrador</option>
+                  <option value="SELLER">Vendedor</option>
+              </select>
           </div>
           <div className="form-group">
               <label>Password</label>

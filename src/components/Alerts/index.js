@@ -7,3 +7,11 @@ export const Success = ({ message }) => {
     </p>
 	)
 }
+
+export const ErrorAlert = ({ message }) => {
+	return (
+    <p className="alert alert-danger py-3 text-center">
+      { message }
+    </p>
+	)
+}

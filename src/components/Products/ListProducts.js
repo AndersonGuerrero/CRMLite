@@ -4,7 +4,7 @@ import { useQuery, useMutation } from "react-apollo-hooks"
 import { GET_PRODUCTS_QUERY } from '../../queries'
 import { REMOVE_PRODUCT_MUTATION } from '../../mutations'
 import { Paginator } from '../Layout/Paginator'
-import { Success } from '../Alerts/Success'
+import { Success } from '../Alerts'
 import { Spinner } from '../Layout/Spinner'
 
 

@@ -1,9 +1,12 @@
 import React, { Fragment, useState } from 'react'
 import { useMutation } from 'react-apollo-hooks'
 import { useAlert } from "react-alert";
+import { withRouter } from 'react-router-dom'
+import { ErrorAlert } from '../Alerts'
 import { LOGIN_USER_MUTATION } from '../../mutations'
 
-export const Login =  (props)=> {
+const _Login =  (props)=> {
+  const [ Lockbtn, setLockbtn ] = useState(false)
   const alert = useAlert()
   const [loginUser, { loading }] = useMutation(LOGIN_USER_MUTATION)
 
@@ -11,6 +14,9 @@ export const Login =  (props)=> {
     username: '',
     password: ''
   })
+  if (props.userActual){
+    props.history.push('/dashboard')
+  }
 
   const onChange = (e)=>{
     const { name, value} = e.target
@@ -27,15 +33,19 @@ export const Login =  (props)=> {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    setLockbtn(true)
     loginUser({
       variables: { input: login }
     }).then( ({data})=>{
       const {message, error, token } = data.authentication
       if (error) {
+        setLockbtn(false)
         alert.error(message)
       }else{
         localStorage.setItem('token', token)
         alert.success(message)
+        props.refetch()
+        props.history.push('/dashboard')
       }
     }, error => {
       alert.error(error)
@@ -43,13 +53,18 @@ export const Login =  (props)=> {
   }
 
   const {user, password} = login;
-      
+  let message = ''
+  if (props.location.state){
+    if(props.location.state.message){
+      message = <ErrorAlert message={props.location.state.message} />
+    }
+  }
   return ( 
     <Fragment>
       <h1 className="text-center mb-5">Iniciar Sesión</h1>
       <div className="row  justify-content-center">
         <form onSubmit={ onSubmit } className="col-md-8">
-
+          { message }
           <div className="form-group">
               <label>Usuario</label>
               <input 
@@ -76,7 +91,7 @@ export const Login =  (props)=> {
           </div>
 
           <button 
-              disabled={ loading || validForm() }
+              disabled={ loading || validForm() || Lockbtn }
               type="submit" 
               className="btn btn-success float-right">
                   Iniciar Sesión
@@ -86,3 +101,6 @@ export const Login =  (props)=> {
     </Fragment>
   )
 }
+
+const Login =withRouter(_Login)
+export { Login }

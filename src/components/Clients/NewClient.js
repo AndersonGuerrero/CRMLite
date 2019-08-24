@@ -62,7 +62,8 @@ export const NewClient = (props) => {
                   company,
                   age: Number(age),
                   type,
-                  emails: emails.map( (item) => ({ email: item.email }))
+                  emails: emails.map( (item) => ({ email: item.email })),
+                  seller: props.userActual._id
                 }
 
                 createClient({

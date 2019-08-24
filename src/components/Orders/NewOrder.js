@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import { ClientData } from './ClientData'
 import { ProductsSection } from './ProductsSection'
+import { withRouter } from 'react-router-dom'
 
-
-export const NewOrder = (props) => {
+const _NewOrder = (props) => {
   const { id } = props.match.params
 
   return (
@@ -17,9 +17,12 @@ export const NewOrder = (props) => {
           />           
         </div>
         <div className="col-md-8">
-          <ProductsSection />
+          <ProductsSection userActual={props.userActual} />
         </div>
       </div>
     </Fragment>
     )
 }
+
+const NewOrder = withRouter(_NewOrder)
+export { NewOrder }

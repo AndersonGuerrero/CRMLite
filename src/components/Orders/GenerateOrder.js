@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { Spinner } from '../Layout/Spinner'
 
 
-const GenerateOrder_ = ({ products, total, match, history, refetch }) => {
+const GenerateOrder_ = ({ products, total, match, history, refetch, userActual }) => {
   const [createOrder, { loading }] = useMutation(NEW_ORDER_MUTATION)
   
   const validatebtn = ()=>{
@@ -19,7 +19,8 @@ const GenerateOrder_ = ({ products, total, match, history, refetch }) => {
     const input = {
       total,
       order: writeproducts,
-      client: match.params.id
+      client: match.params.id,
+      seller: userActual._id
     }
     createOrder({
       variables: { input }

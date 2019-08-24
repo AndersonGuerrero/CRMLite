@@ -79,3 +79,16 @@ query getTopClients {
   }
 }
 `
+
+// Users and sessins queries
+export const USER_ACTUAL_QUERY = gql`
+query  getAuthenticatedUser {
+  userActual: getAuthenticatedUser{
+    _id
+    name
+    lastname
+    username
+    role
+  }
+}
+`
