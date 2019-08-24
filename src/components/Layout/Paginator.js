@@ -4,7 +4,7 @@ export const Paginator = (props) => {
 	
   const { page, total , limit, onChangePage } = props
   const pages = Math.ceil(total / limit)
-  if(page > pages){
+  if(page > pages && pages > 0){
     onChangePage(page-1)
   }
   return (
