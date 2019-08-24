@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CRM APP [DEMO](https://crm-lite.aguerrerodev.now.sh/).<br>
+
+Login Seller:<br>
+User: Seller<br>
+Password: Seller<br>
+
+Login Admin:<br>
+User: admin<br>
+Password: admin<br>
 
 ## Available Scripts
 
